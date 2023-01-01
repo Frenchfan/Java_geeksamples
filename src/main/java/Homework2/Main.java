@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.Scanner;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
 
@@ -30,6 +31,15 @@ public class Main {
 
         bubbleSort(myArray);
         readJSON(jsonString2);
+        System.out.println("Задача 4 - калькулятор с логированием");
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите первое число:");
+        int number1 = scanner.nextInt();
+        System.out.println("Введите операцию (+ - * или /)");
+        String operation = scanner.next();
+        System.out.println("Введите второе число:");
+        int number2 = scanner.nextInt();
+        System.out.println("Результат операции: " + myCalc(number1, number2, operation));
 
     }
 
@@ -89,6 +99,29 @@ public class Main {
         //обрезаем and в конце запроса
         return result;
     }
+
+    /**
+     * Калькулятор из предыдущей домашки с логированием
+     */
+
+    public static double myCalc(int number1, int number2, String operation) {
+        switch (operation) {
+            case "+": { int result = number1 + number2;
+                logger.info("Калькулятор: " + number1 + " + " + number2 + " = " + result);
+                return number1 + number2;}
+            case "-": {int result = number1 - number2;
+            logger.info("Калькулятор: " + number1 + " - " + number2 + " = " + result);
+            return number1 - number2;}
+            case "*": {int result = number1 * number2;
+                logger.info("Калькулятор: " + number1 + " * " + number2 + " = " + result);
+                return number1 * number2;}
+            case "/": {int result = number1 / number2;
+                logger.info("Калькулятор: " + number1 + " / " + number2 + " = " + result);
+                return number1 / number2;}
+        }
+        return 0;
+    }
+
 
 
 
