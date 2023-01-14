@@ -1,11 +1,11 @@
 package OOPSem1;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Optional;
+import java.util.Set;
 
 public class Person {
-    public static List<Person> family = new ArrayList<>();
+    public static Set<Person> family = new HashSet<>();
     private String name;
 
     private boolean sex;
@@ -16,12 +16,15 @@ public class Person {
 
     private Person child;
 
+    private Person sisterOrBrother;
+
     public Person(String name, boolean sex) {
         this.name = name;
-        this.sex = sex; // 0 - девочка
+        this.sex = sex; // false - девочка
         mother = null;
         father = null;
         child = null;
+        sisterOrBrother = null;
         family.add(this);
     }
 
@@ -41,6 +44,11 @@ public class Person {
         else person.mother = this;
     }
 
+    public void setSisterOrBrother(Person person) {
+        this.sisterOrBrother = person;
+        person.sisterOrBrother = this;
+    }
+
     public String getName() {
         return name;
     }
@@ -56,10 +64,14 @@ public class Person {
         String optChild = Optional.ofNullable(child)
                 .map(Person::getName)
                 .orElse("детей пока нет");
+        String optSisterOrBrother = Optional.ofNullable(sisterOrBrother)
+                .map(Person::getName)
+                .orElse("сестра или брат не известны");
         return "У человека " +
                 "с именем " + name + '\'' +
                 ", маму зовут: " + optMother +
                 ", папу зовут: " + optFather +
+                ", сестру или брата зовут: " + optSisterOrBrother +
                ", ребенка зовут: " + optChild;
     }
 }

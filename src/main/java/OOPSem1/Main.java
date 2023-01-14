@@ -1,27 +1,47 @@
 package OOPSem1;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
 public class Main {
-    static List<Human> myList = new LinkedList<>();
 
     public static void main(String[] args) {
-        Human Adam = new Human("Адам", "м", true);
-        Human Eva = new Human("Ева", "м", true);
-        Human Isaac = new Human("Исаак", "м", true);
+        System.out.println("Вариант реализации генеалогического древа: ");
+        System.out.println("Реализация на базе HashSet коллекции экземлпяров класса Person с полями-ссылками " +
+                "на других членов семьи. Семейные связи устанавливаются произвольно через методы класса. " +
+                "Null-safety обеспечивается применением класса Optional");
+        System.out.println("Ниже - распечатка по 9 экземплярам коллекции, " +
+                "коллекция - статическая, доступна через имя класса");
+        task1();
+        System.out.println("Задача 2: Человек-ТВ - взаимодействие:");
 
+        task2();
 
-        myList.add(Adam);
-        myList.add(Eva);
-        myList.add(Isaac);
-        checkChildren(Adam);
-        checkParents(Isaac);
+        System.out.println("Задача 3: тигр нападает на человек");
 
+        task3();
+    }
+
+    private static void task3() {
+        Human human = new Human("Вася");
+        Animal tiger = new Tiger();
+        for (int i = 0; i < 22; i++) {
+            tiger.attack(human);
+        }
+    }
+
+    private static void task2() {
+        TV tv = new TV();
+        Human human = new Human("Иннокентий");
+        for (int i = 0; i < 24; i++) {
+            human.turnOnOffTV(tv);
+        }
+        human.gotoSleep();
+        human.turnOnOffTV(tv);
+    }
+
+    private static void task1() {
         Person p1 = new Person("Вася", true);
         Person p2 = new Person("Маша", false);
         Person p3 = new Person("Коля", true);
+        Person p9 = new Person("Алевтина", false);
         Person p4 = new Person("Василиса Петровна", false);
         Person p5 = new Person("Николай Иванович", true);
         Person p6 = new Person("Ольга Бузова", false);
@@ -35,36 +55,12 @@ public class Main {
         p2.setFather(p7);
         p2.setChild(p3);
         p5.setFather(p8);
+        p9.setSisterOrBrother(p3);
+        p9.setMother(p2);
+        p9.setFather(p1);
 
         Person.family.forEach(System.out::println);
-
-
-
-
-
     }
 
-    public static void checkChildren(Human human) {
-        int index = myList.indexOf(human);
-        if (index < myList.size() - 1) {
-            List<Human> children = new ArrayList<>(myList.subList(index +1 , myList.size()));
-            System.out.println("У человека " + human);
-            System.out.println("Следующие потомки: ");
-            for (Human myhuman: children) {
-                System.out.println(myhuman);
-            }
-        }
-    }
 
-    public static void checkParents(Human human) {
-        int index = myList.indexOf(human);
-        if (index > 0) {
-            List<Human> parents = new ArrayList<>(myList.subList(0 , index));
-            System.out.println("У человека " + human);
-            System.out.println("Следующие предки: ");
-            for (Human myhuman: parents) {
-                System.out.println(myhuman);
-            }
-        }
-    }
 }
