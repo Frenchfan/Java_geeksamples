@@ -16,13 +16,35 @@ public class Main {
         myList.add(Adam);
         myList.add(Eva);
         myList.add(Isaac);
-        List<Human> myChilren = checkChildren(Adam);
-        List<Human> myParents = checkParents(Isaac);
+        checkChildren(Adam);
+        checkParents(Isaac);
+
+        Person p1 = new Person("Вася", true);
+        Person p2 = new Person("Маша", false);
+        Person p3 = new Person("Коля", true);
+        Person p4 = new Person("Василиса Петровна", false);
+        Person p5 = new Person("Николай Иванович", true);
+        Person p6 = new Person("Ольга Бузова", false);
+        Person p7 = new Person("Тимур Батрутдинов", true);
+        Person p8 = new Person("Филипп Киркоров", true);
+
+        p1.setFather(p5);
+        p1.setMother(p4);
+        p1.setChild(p3);
+        p2.setMother(p6);
+        p2.setFather(p7);
+        p2.setChild(p3);
+        p5.setFather(p8);
+
+        Person.family.forEach(System.out::println);
+
+
+
 
 
     }
 
-    public static List<Human> checkChildren(Human human) {
+    public static void checkChildren(Human human) {
         int index = myList.indexOf(human);
         if (index < myList.size() - 1) {
             List<Human> children = new ArrayList<>(myList.subList(index +1 , myList.size()));
@@ -32,10 +54,9 @@ public class Main {
                 System.out.println(myhuman);
             }
         }
-        return new ArrayList<>();
     }
 
-    public static List<Human> checkParents(Human human) {
+    public static void checkParents(Human human) {
         int index = myList.indexOf(human);
         if (index > 0) {
             List<Human> parents = new ArrayList<>(myList.subList(0 , index));
@@ -45,6 +66,5 @@ public class Main {
                 System.out.println(myhuman);
             }
         }
-        return new ArrayList<>();
     }
 }

@@ -11,21 +11,11 @@ public class Human {
         this.name = name;
         this.sex = sex;
         this.liveStatus = liveStatus;
-
     }
 
     public String getName() {
         return name;
     }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public boolean isLiveStatus() {
-        return liveStatus;
-    }
-
     @Override
     public String toString() {
         return "Human{" +
