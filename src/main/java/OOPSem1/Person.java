@@ -21,10 +21,6 @@ public class Person {
     public Person(String name, boolean sex) {
         this.name = name;
         this.sex = sex; // false - девочка
-        mother = null;
-        father = null;
-        child = null;
-        sisterOrBrother = null;
         family.add(this);
     }
 
