@@ -1,8 +1,6 @@
 package OOPSem2;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,18 +16,19 @@ public class Main {
         int quantity = scanner.nextInt();
         List<Animal> pets = new ArrayList<>();
         for (int i = 0; i < quantity; i++) {
-            System.out.println("Собака (1) или кошка (0)?");
+            System.out.println("Собака (1), человек(2) или кошка (0)?");
             int type = scanner.nextInt();
             if (type == 1) {
                 pets.add(new Dog("Собака", i));
-            } else {
+            } else if (type == 2) {
+                pets.add(new Human(null, "Андрей"));
+            }
+            else {
                 pets.add(new Cat("Мурзик", i));
             }
         }
-        Animal human2 = new Human(null, "Коля");
-        if (human2 instanceof Cat) {
-            pets.add(human2);
-        }
+
+        pets.removeIf(next -> next instanceof Human);
 
 
         Human human = new Human(pets, name);
