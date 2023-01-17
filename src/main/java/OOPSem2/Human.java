@@ -1,6 +1,8 @@
 package OOPSem2;
 
 import java.util.List;
+import java.util.*;
+
 
 // Описать человека с возможностью заведения животных
 // Добавить методы по изменению параметров
@@ -10,24 +12,22 @@ import java.util.List;
 public class Human extends Animal {
     private List<Animal> pets;
 
-    private String name;
-
-    public String getName() {
-        return name;
-    }
-
     public List<Animal> getPets() {
         return pets;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Human(List<Animal> pets, String name) {
+
+        pets.removeIf(next -> next instanceof Human);
+        this.pets = pets;
+        this.setName(name);
     }
 
-    public Human(List<Animal> pets, String name) {
-        this.pets = pets;
-        this.name = name;
+    public Human(String name) {
+        this.setName(name);
     }
+
+
 
     @Override
     void tellAboutYourself() {
