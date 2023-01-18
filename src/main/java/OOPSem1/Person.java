@@ -6,9 +6,9 @@ import java.util.Set;
 
 public class Person {
     public static Set<Person> family = new HashSet<>();
-    private String name;
+    private final String name;
 
-    private boolean sex;
+    private final boolean sex;
 
     private Person mother;
 

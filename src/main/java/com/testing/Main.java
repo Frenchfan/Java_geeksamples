@@ -1,4 +1,4 @@
-package gridnine.testing;
+package com.testing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class Main {
      * @param args
      */
     public static void main(String[] args) {
-        List<Flight> myFlights = new ArrayList<>(FlightBuilder.createFlights());
+        List<Flight> myFlights = FlightBuilder.createFlights();
         myFlights.forEach(System.out::println);
         System.out.println("***********");
         List<Flight> firstList = FlightsFilter.departureAfterNow(myFlights);
@@ -41,6 +41,5 @@ public class Main {
         System.out.println("***********");
         List<Flight> thirdList = FlightsFilter.timeOnEarthLessThan2Hours(myFlights);
         thirdList.forEach(System.out::println);
-
     }
 }

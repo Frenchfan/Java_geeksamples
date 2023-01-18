@@ -96,7 +96,8 @@ public class Main {
             if (array.get(i) instanceof Integer) {
                 array.remove(i);
             } else {
-                i++;
+                i++; // меняем счетчик только, если нет удаления - меняется длина
+                // коллекции
             }
         }
 

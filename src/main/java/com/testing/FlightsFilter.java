@@ -1,4 +1,4 @@
-package gridnine.testing;
+package com.testing;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -40,7 +40,8 @@ public class FlightsFilter {
      */
     public static List<Flight> timeOnEarthLessThan2Hours(List<Flight> flights) {
         if (flights == null) return new ArrayList<>();
-        ListIterator<Flight> iterator = flights.listIterator();
+        List<Flight>myFlights = new ArrayList<>(flights);
+        ListIterator<Flight> iterator = myFlights.listIterator();
         while (iterator.hasNext()) {
             Flight flight = iterator.next();
             List<Segment> segments = flight.getSegments();
@@ -51,6 +52,6 @@ public class FlightsFilter {
                 }
             }
         }
-        return flights;
+        return myFlights;
     }
 }
