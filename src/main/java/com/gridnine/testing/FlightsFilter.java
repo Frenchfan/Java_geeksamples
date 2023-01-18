@@ -5,7 +5,7 @@ import java.util.*;
 public class FlightsFilter {
     /**
      * @param flights - List<Flight>
-     * @return flights with departure after now only, uses parallelStream (Stream API)
+     * @return flights with departure after now only, uses Stream API
      */
     public static List<Flight> departureAfterNow(List<Flight> flights) {
         return Optional.ofNullable(flights)
@@ -20,7 +20,7 @@ public class FlightsFilter {
 
     /**
      * @param flights - List<Flight>
-     * @return flights with arrival after departure, uses parallelStream (Stream API)
+     * @return flights with arrival after departure, uses Stream API
      */
     public static List<Flight> arrivalAfterDeparture(List<Flight> flights) {
         return Optional.ofNullable(flights)
