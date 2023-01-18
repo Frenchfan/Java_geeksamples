@@ -1,4 +1,4 @@
-package com.testing;
+package com.gridnine.testing;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -10,7 +10,7 @@ public class FlightsFilter {
     public static List<Flight> departureAfterNow(List<Flight> flights) {
         return Optional.ofNullable(flights)
                 .orElseGet(ArrayList::new)
-                .parallelStream()
+                .stream()
                 .filter(y -> y.getSegments()
                         .stream()
                         .allMatch(x-> x.getDepartureDate()
@@ -25,7 +25,7 @@ public class FlightsFilter {
     public static List<Flight> arrivalAfterDeparture(List<Flight> flights) {
         return Optional.ofNullable(flights)
                 .orElseGet(Collections::emptyList)
-                .parallelStream()
+                .stream()
                 .filter(y -> y.getSegments()
                         .stream()
                         .allMatch(x-> x.getArrivalDate()
