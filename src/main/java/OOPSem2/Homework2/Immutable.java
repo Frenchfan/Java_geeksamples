@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class Immutable {
-    private String name;
+    private final String name;
 
-    private int age;
+    private final int age;
 
-    Map<String, String> myMap;
+    private final Map<String, String> myMap;
 
     public Immutable(String name, int age, Map<String, String> myMap) {
         this.name = name;
@@ -21,13 +21,18 @@ public final class Immutable {
     }
 
     public String getName() {
-        return name;
+        return String.copyValueOf(name.toCharArray());
     }
     public int getAge() {
-        return age;
+        int copyAge;
+        return copyAge = age;
     }
 
     public Map<String, String> getMyMap() {
-        return myMap;
+        Map<String, String> deepCopy = new HashMap<>();
+        for(String key: myMap.keySet()) {
+            deepCopy.put(key, myMap.get(key));
+        }
+        return deepCopy;
     }
 }
