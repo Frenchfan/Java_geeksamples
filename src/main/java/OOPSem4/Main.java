@@ -7,8 +7,8 @@ public class Main {
         Kolya.setYear(2005);
         Student Masha = new Student();
         Masha.setYear(2007);
-        //StudentComparator comparator = new StudentComparator();
-        //System.out.println(comparator.compare(Kolya, Masha));
+        StudentComparator comparator = new StudentComparator();
+        System.out.println(comparator.compare(Kolya, Masha));
         System.out.println(Kolya.compareTo(Masha));
 
     }

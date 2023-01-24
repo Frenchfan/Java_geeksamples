@@ -47,6 +47,6 @@ public class Student implements Comparable<Student> {
 
     @Override
     public int compareTo(Student o) {
-        return Integer.compare(this.getYear(), o.getYear());
+        return this.getYear() - o.getYear();
     }
 }
