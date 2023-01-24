@@ -7,6 +7,11 @@ public class Student implements Comparable<Student> {
     private float grade;
     private int year;
 
+    public Student(String name, float grade, int year) {
+        this.name = name;
+        this.grade = grade;
+        this.year = year;
+    }
 
     public String getName() {
         return name;
@@ -48,5 +53,14 @@ public class Student implements Comparable<Student> {
     @Override
     public int compareTo(Student o) {
         return this.getYear() - o.getYear();
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", grade=" + grade +
+                ", year=" + year +
+                '}';
     }
 }
