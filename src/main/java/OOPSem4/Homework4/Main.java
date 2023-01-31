@@ -132,7 +132,7 @@ public class Main extends JFrame {
 //                    .average();
             List<User> bestStudents = userService.getStudents().stream()
                     .map(x -> (Student) x)
-                    .filter(x-> x.getGrade() > 0.75 * 5)
+                    .filter(x -> x.getGrade() > 0.75 * 5)
                     .collect(Collectors.toList());
             userService.getRepository().setUsers(bestStudents);
             table.updateUI();
@@ -142,7 +142,7 @@ public class Main extends JFrame {
             noEdit(userService, table);
             List<User> mediumStudents = userService.getStudents().stream()
                     .map(x -> (Student) x)
-                    .filter(x-> x.getGrade() < 0.5 * 5)
+                    .filter(x -> x.getGrade() < 0.5 * 5)
                     .collect(Collectors.toList());
             userService.getRepository().setUsers(mediumStudents);
             table.updateUI();
@@ -153,7 +153,7 @@ public class Main extends JFrame {
             noEdit(userService, table);
             List<User> worstStudents = userService.getStudents().stream()
                     .map(x -> (Student) x)
-                    .filter(x-> x.getGrade() < 0.25 * 5)
+                    .filter(x -> x.getGrade() < 0.25 * 5)
                     .collect(Collectors.toList());
             userService.getRepository().setUsers(worstStudents);
             table.updateUI();
