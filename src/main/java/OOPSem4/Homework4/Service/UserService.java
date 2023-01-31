@@ -1,6 +1,8 @@
 package OOPSem4.Homework4.Service;
 
+import OOPSem4.Homework4.Model.Student;
 import OOPSem4.Homework4.Model.User;
+import OOPSem4.Homework4.Repository.UserRepository;
 
 import java.util.List;
 
@@ -18,8 +20,16 @@ public interface UserService {
 
     List<User> getAllUsers();
 
+
     User get(User user);
 
     void saveAll(List<User> users);
-}
+
+    List<User> getStudents();
+
+    List<User> getTeachers();
+
+    public UserRepository<User> getRepository();
+
+    }
 

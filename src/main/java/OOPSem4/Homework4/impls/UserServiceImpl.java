@@ -1,10 +1,15 @@
 package OOPSem4.Homework4.impls;
 
+import OOPSem4.Homework4.Model.Student;
+import OOPSem4.Homework4.Model.Teacher;
 import OOPSem4.Homework4.Model.User;
 import OOPSem4.Homework4.Repository.UserRepository;
 import OOPSem4.Homework4.Service.UserService;
 
+import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.OptionalDouble;
+import java.util.stream.Collectors;
 
 public class UserServiceImpl implements UserService {
 
@@ -13,6 +18,25 @@ public class UserServiceImpl implements UserService {
     @Override
     public void add(User user) {
         repository.save(user);
+    }
+
+    public UserRepository<User> getRepository() {
+        return repository;
+    }
+
+
+    public List<Student> getOver75SAverageGradeStudents() {
+        OptionalDouble averageValue = getAllUsers().stream()
+                .map(x-> (Student) x)
+                .map(Student::getGrade)
+                .map(Double.class::cast)
+                .mapToDouble(Double::doubleValue)
+                .average();
+
+        return getAllUsers().stream()
+                .map(x -> (Student) x)
+                .filter(x-> x.getGrade() > averageValue.getAsDouble())
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -56,5 +80,19 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveAll(List<User> users) {
         repository.saveAll(users);
+    }
+
+    @Override
+    public List<User> getStudents() {
+        return getAllUsers().stream()
+                .filter(Student.class::isInstance)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<User> getTeachers() {
+        return getAllUsers().stream()
+                .filter(Teacher.class::isInstance)
+                .collect(Collectors.toList());
     }
 }

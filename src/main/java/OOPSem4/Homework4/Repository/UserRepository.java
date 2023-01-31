@@ -18,12 +18,17 @@ public class UserRepository<T extends User> {
     private List<T> users = new ArrayList<>();
     String outputFileName = "Users.txt";
 
+    public void setUsers(List<T> users) {
+        this.users.clear();
+        this.users.addAll(users);
+    }
+
 
     /**
      * updates the users List before any operations with the list
      * does the checks to make sure it works with an actual list
      */
-    private void load() {
+    public void load() {
         users.clear();
         try(BufferedReader reader = new BufferedReader(new FileReader(outputFileName))){
             String line;
