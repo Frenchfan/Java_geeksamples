@@ -4,18 +4,9 @@ import java.util.List;
 import java.util.Objects;
 
 public class Teacher extends User {
-    private List<Student> group;
 
     public Teacher(String name) {
         this.setName(name);
-    }
-
-    public List<Student> getGroup() {
-        return group;
-    }
-
-    public void setGroup(List<Student> group) {
-        this.group = group;
     }
 
     @Override
