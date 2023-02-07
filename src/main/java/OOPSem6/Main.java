@@ -11,5 +11,6 @@ public class Main {
         System.out.println(employee2.getName());
         Worker employee3 = new Worker.EmployeeBuilder("Ivanov").setPassport(new Passport().setDateOfBirth(121)).build();
         System.out.println(employee3);
+
     }
 }
