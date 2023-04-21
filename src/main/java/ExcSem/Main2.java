@@ -2,6 +2,7 @@ package ExcSem;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.Map;
 
 /** Для ДЗ
  * Строки, состоящие из последовательностей цифр,
@@ -37,10 +38,11 @@ import java.util.HashMap;
  */
 public class Main2 {
     public static void main(String[] args) {
-//        HashMap<String, Integer> result = new HashMap<>();
-//        File file = new File("text.txt");
-//        result = readFile(file);
-//        writeFile(file, result);
+        Map<String, Integer> result = new HashMap<>();
+        File file = new File("text.txt");
+        result = readFile(file);
+        writeFile(file, result);
+
         try (Counter myCounter = new Counter()) {
             myCounter.add();
             System.out.println(myCounter.getIndex());
@@ -59,8 +61,8 @@ public class Main2 {
         }
     }
 
-    public static HashMap<String, Integer> readFile (File file) {
-        HashMap<String, Integer> result = new HashMap<>();
+    public static Map<String, Integer> readFile (File file) {
+        Map<String, Integer> result = new HashMap<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -80,7 +82,7 @@ public class Main2 {
         return result;
     }
 
-    public static void writeFile (File file, HashMap<String, Integer> result) {
+    public static void writeFile (File file, Map<String, Integer> result) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             for (String key: result.keySet()) {
                 writer.write(key + "=" + result.get(key) + '\n');
