@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
-        passwordValidate("wy12_re", "rrr", "rrr");
+        passwordValidate("wy12_re", "rtiu", "rtiu");
     }
 
     /**
@@ -31,11 +31,11 @@ public class Main {
      * Allows only one underscore(_), Latin ABC and digits
      */
     static String pattern = "[A-Za-z0-9]*_?[A-Za-z0-9]*";
-    static String pattern2 = "^[A-Z0-9_]$";//ignore case;
+    static String pattern2 = "^[A-Za-z0-9_]\b";//ignore case;
 
     /**
      * Validates login, password to match the pattern above, max length and
-     * ensures that passwoed and confirmPassword are equal
+     * ensures that password and confirmPassword are equal
      * The checks are accompanied by throwing special exceptions
      * (user classes - WringPasswordException and WrongLoginException), indicating the
      * reason of the failed check. All the exceptions are caught within the method
