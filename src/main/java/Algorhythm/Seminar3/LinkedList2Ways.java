@@ -1,6 +1,6 @@
 package Algorhythm.Seminar3;
 
-public class Dequeue {
+public class LinkedList2Ways {
 
     private Node head;
     private Node tail;
@@ -26,6 +26,22 @@ public class Dequeue {
             node.next = head;
         }
         head = node;
+    }
+
+    public void reverseLoop() {
+        if (head != null) {
+            Node prev = null;
+            Node curr = head;
+
+            while (curr != null) {
+                Node tmp = curr.next;
+                curr.next = curr.previous;
+                curr.previous = tmp;
+                prev = curr;
+                curr = tmp;
+            }
+            head = prev;
+        }
     }
 
     public void deleteFirst() {
@@ -82,5 +98,16 @@ public class Dequeue {
                 currentNode = currentNode.next;
             }
         } while (!finish);
+    }
+
+    public void printOut () {
+        if (head != null) {
+            Node node = head;
+            while (node != null) {
+                System.out.print(node.value + " ");
+                node = node.next;
+            }
+            System.out.print('\n');
+        }
     }
 }
