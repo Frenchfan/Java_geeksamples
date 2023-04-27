@@ -29,5 +29,7 @@ public class Main {
         myList2.printOut();
         myList2.reverseLoop();
         myList2.printOut();
+        myList2.deleteLast();
+        myList2.printOut();
     }
 }

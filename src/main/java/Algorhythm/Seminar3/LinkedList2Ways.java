@@ -32,6 +32,7 @@ public class LinkedList2Ways {
         if (head != null) {
             Node prev = null;
             Node curr = head;
+            tail = head;
 
             while (curr != null) {
                 Node tmp = curr.next;
